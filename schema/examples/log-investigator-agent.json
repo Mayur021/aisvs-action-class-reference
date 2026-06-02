@@ -1,0 +1,33 @@
+{
+  "agent_id": "log-investigator-v1",
+  "manifest_version": "1.0.0",
+  "purpose": "SOC investigation agent. Pulls and correlates security logs, drafts incident hypotheses, assigns dispositions. All read-only or reversible. No actuation. Matches the architecture Anthropic describes in their CLUE SecOps blog: investigation (read) is reversible, actuation (write) is a different floor.",
+  "publisher": "example-soc",
+  "actions": [
+    {
+      "name": "query_siem",
+      "class": "read_only",
+      "description": "Run a query against the SIEM. Returns events.",
+      "target_scope": "siem.read"
+    },
+    {
+      "name": "correlate_events",
+      "class": "read_only",
+      "description": "Correlate events from multiple sources into a single timeline.",
+      "target_scope": "siem.read"
+    },
+    {
+      "name": "draft_hypothesis",
+      "class": "reversible",
+      "description": "Draft an incident hypothesis as a markdown document. Stored as a draft only.",
+      "target_scope": "case.draft"
+    },
+    {
+      "name": "assign_disposition",
+      "class": "reversible",
+      "description": "Assign a disposition label (true_positive, false_positive, needs_review) to the case. Reversible by analyst review.",
+      "target_scope": "case.disposition"
+    }
+  ],
+  "default_policy_when_undeclared": "refuse"
+}

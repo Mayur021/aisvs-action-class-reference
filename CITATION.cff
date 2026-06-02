@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "AISVS Action-Class Reference: a reference implementation of OWASP AISVS C9.2.6 and C9.2.7"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Agnihotri
+    given-names: Mayur
+    affiliation: StraightArc Technologies
+    orcid: ""
+repository-code: "https://github.com/Mayur021/aisvs-action-class-reference"
+url: "https://github.com/Mayur021/aisvs-action-class-reference"
+license: CC-BY-4.0
+keywords:
+  - OWASP
+  - AISVS
+  - agent security
+  - decision-rights
+  - reversibility-graded authority
+  - action class
+  - deterministic gate
+  - worst-case chain rule
+  - C9.2.6
+  - C9.2.7

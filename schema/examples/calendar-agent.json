@@ -1,0 +1,35 @@
+{
+  "agent_id": "calendar-agent-v1",
+  "manifest_version": "1.0.0",
+  "purpose": "Read user's calendar, draft suggested meeting times, and send calendar invites on approval. Canonical example: read_calendar is read_only, but send_invite is external_reversible because the invite leaves the system to an external recipient.",
+  "publisher": "example-org",
+  "actions": [
+    {
+      "name": "read_calendar",
+      "class": "read_only",
+      "description": "Fetch the user's calendar events for a date range.",
+      "target_scope": "calendar.read"
+    },
+    {
+      "name": "draft_meeting_time",
+      "class": "reversible",
+      "description": "Compute a suggested meeting time and store it in a draft state visible only to the user.",
+      "target_scope": "calendar.draft"
+    },
+    {
+      "name": "send_invite",
+      "class": "external_reversible",
+      "description": "Send a calendar invite to one or more external recipients. Reaches outside the system. Undo requires sending a cancellation email and per-recipient acknowledgment.",
+      "target_scope": "calendar.invite.external",
+      "requires_approval": true
+    },
+    {
+      "name": "delete_event",
+      "class": "irreversible",
+      "description": "Delete a calendar event without leaving an audit-trail event. Once gone, cannot be cleanly recovered from the agent side.",
+      "target_scope": "calendar.event.delete",
+      "requires_approval": true
+    }
+  ],
+  "default_policy_when_undeclared": "refuse"
+}

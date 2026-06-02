@@ -1,0 +1,42 @@
+{
+  "agent_id": "incident-responder-v1",
+  "manifest_version": "1.0.0",
+  "purpose": "Incident response agent. Investigates AND actuates: blocking users, quarantining hosts, revoking tokens. Mixed action classes from read_only up to irreversible. All write actions require approval per AISVS C9.2.6.",
+  "publisher": "example-soc",
+  "actions": [
+    {
+      "name": "fetch_alert",
+      "class": "read_only",
+      "description": "Fetch an alert from the SIEM.",
+      "target_scope": "siem.read"
+    },
+    {
+      "name": "enrich_with_threat_intel",
+      "class": "read_only",
+      "description": "Look up indicators against threat intel sources.",
+      "target_scope": "ti.read"
+    },
+    {
+      "name": "quarantine_host",
+      "class": "external_reversible",
+      "description": "Isolate a host on the network. Reaches outside the agent's process. Undo requires explicit unquarantine action and network reconvergence.",
+      "target_scope": "edr.quarantine",
+      "requires_approval": true
+    },
+    {
+      "name": "revoke_token",
+      "class": "irreversible",
+      "description": "Revoke an OAuth or session token. Once revoked, the token is gone. Re-issuance is a new token, not a recovery.",
+      "target_scope": "iam.token.revoke",
+      "requires_approval": true
+    },
+    {
+      "name": "block_user",
+      "class": "irreversible",
+      "description": "Block a user account. Disables sign-in. Re-enabling is a separate operation with its own audit trail.",
+      "target_scope": "iam.user.block",
+      "requires_approval": true
+    }
+  ],
+  "default_policy_when_undeclared": "refuse"
+}

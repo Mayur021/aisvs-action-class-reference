@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Mayur021/aisvs-action-class-reference/schema/action-class.schema.json",
+  "title": "AISVS C9.2.6 Action-Class Manifest",
+  "description": "Manifest declaring the action class for each action an agent is permitted to perform. Evaluated by a deterministic gate. The class is declared by the agent publisher and is not derived from agent runtime output.",
+  "type": "object",
+  "required": ["agent_id", "manifest_version", "actions"],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Unique identifier for the agent. Used by the gate to look up this manifest at runtime.",
+      "minLength": 1
+    },
+    "manifest_version": {
+      "type": "string",
+      "description": "Semantic version of this manifest.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Human-readable purpose of the agent. Documentation only, not used by the gate."
+    },
+    "publisher": {
+      "type": "string",
+      "description": "Entity that publishes and signs this manifest. Establishes accountability for the declared classes."
+    },
+    "actions": {
+      "type": "array",
+      "description": "Permitted actions and their declared classes. The gate refuses any action not present in this list.",
+      "items": {
+        "type": "object",
+        "required": ["name", "class"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Action identifier. Example: 'send_email', 'read_calendar', 'transfer_funds'.",
+            "minLength": 1
+          },
+          "class": {
+            "type": "string",
+            "enum": ["read_only", "reversible", "external_reversible", "irreversible"],
+            "description": "Action class per AISVS C9.2.6. read_only: action only reads, no state change. reversible: state change, cleanly undoable by agent or operator. external_reversible: reaches outside the system, undo requires external coordination. irreversible: cannot be cleanly undone."
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of what this action does."
+          },
+          "target_scope": {
+            "type": "string",
+            "description": "Optional. Names the scope or resource the action targets (e.g., 'inbox.send', 'database.users.delete'). Documentation hint, not enforced by the gate."
+          },
+          "requires_approval": {
+            "type": "boolean",
+            "description": "Optional. If true, the gate must require human-in-the-loop approval before executing this action regardless of class. Default false for read_only and reversible, true for external_reversible and irreversible.",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "default_policy_when_undeclared": {
+      "type": "string",
+      "enum": ["refuse"],
+      "description": "Behavior when the agent attempts an action not declared in this manifest. Always 'refuse' per C9.2.6. Listed explicitly for self-documentation.",
+      "default": "refuse"
+    }
+  },
+  "additionalProperties": false
+}
