@@ -62,6 +62,7 @@ If you cite this work, see `CITATION.cff` for the structured citation.
 
 ## Related work
 
+- [Action-Class Authority for AI Agents: A Verification-Side Reference](https://github.com/Mayur021/action-class-authority) — Whitepaper v1.0 (June 2026). The full architectural reference this implementation operationalizes: four-class reversibility taxonomy, manifest-declared classification, worst-case chain rule, applied to DFIR / SOC workflows.
 - OWASP AISVS C09 research chapter (where C9.2.6 + C9.2.7 currently live, proposed for v1.01).
 - OWASP SPVS V1.3.7 (companion NHI runtime decision-rights work).
 - Christodorescu et al. "Agent Security is a Systems Problem" (arxiv 2605.18991) on why an LLM checking another LLM is not a trusted computing base.
