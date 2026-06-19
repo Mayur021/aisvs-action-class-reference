@@ -1,8 +1,8 @@
 # AISVS Action-Class Reference
 
-Reference implementation for **OWASP AISVS C9.2.6** (manifest-declared action class evaluated by deterministic gate) and **C9.2.7** (worst-case action class governs across multi-step chain).
+Reference implementation for the **OWASP AISVS v1.0 action-class controls**: **C9.2.3** (reversibility classification, implemented here as a publisher-declared manifest), **C9.2.4** (enforcement by a deterministic gate), and **C9.2.7** (worst-case action class governs across a multi-step chain).
 
-These requirements are proposed for AISVS v1.01 and currently live in the C09 research chapter.
+These controls shipped in AISVS v1.0 (C9 Orchestration and Agentic Action). They were originally proposed as C9.2.6 / C9.2.7 and renumbered to C9.2.3 / C9.2.4 / C9.2.7 on merge.
 
 ## What this repo provides
 
@@ -16,7 +16,7 @@ These requirements are proposed for AISVS v1.01 and currently live in the C09 re
 
 Two-line summary:
 
-1. **C9.2.6**: The action class is declared by the publisher in a manifest. The gate evaluates the action class against that manifest. The gate is code the agent cannot reach. The class is not derived from runtime model output.
+1. **C9.2.3** (enforced by **C9.2.4**): The action class is declared by the publisher in a manifest. The gate evaluates the action class against that manifest. The gate is code the agent cannot reach. The class is not derived from runtime model output.
 2. **C9.2.7**: When an agent composes multiple actions in a chain, the worst-case action class across the chain governs the whole chain. A read followed by a write is a write. An external-reversible step followed by an irreversible step is irreversible.
 
 Together these specify the architectural floor for the write side of agentic AI: investigation (read) is reversible and can run on capability-based autonomy, but actuation (write) must pass a deterministic gate evaluating manifest-declared classification.
@@ -29,7 +29,7 @@ The spec text is short on purpose. A reference implementation crystallizes the r
 - Reviewers can see exactly what compliance looks like.
 - Future revisions of the spec can point at this repo as a concrete example.
 
-## Action classes (per AISVS C9.2.6)
+## Action classes (per AISVS C9.2.3)
 
 | Class | Meaning | Example |
 |---|---|---|
@@ -63,7 +63,7 @@ If you cite this work, see `CITATION.cff` for the structured citation.
 ## Related work
 
 - [Action-Class Authority for AI Agents: A Verification-Side Reference](https://github.com/Mayur021/action-class-authority) — Whitepaper v1.0 (June 2026). The full architectural reference this implementation operationalizes: four-class reversibility taxonomy, manifest-declared classification, worst-case chain rule, applied to DFIR / SOC workflows.
-- OWASP AISVS C09 research chapter (where C9.2.6 + C9.2.7 currently live, proposed for v1.01).
+- OWASP AISVS v1.0 C9 Orchestration and Agentic Action (C9.2.3 / C9.2.4 / C9.2.7, shipped).
 - OWASP SPVS V1.3.7 (companion NHI runtime decision-rights work).
 - Christodorescu et al. "Agent Security is a Systems Problem" (arxiv 2605.18991) on why an LLM checking another LLM is not a trusted computing base.
 
