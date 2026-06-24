@@ -1,5 +1,7 @@
 """
-Deterministic Gate. Reference implementation of OWASP AISVS C9.2.6.
+Deterministic Gate. Reference implementation of OWASP AISVS C9.2.3 (trusted
+reversibility classification, implemented here as a publisher-declared manifest)
+and C9.2.4 (runtime enforcement by class).
 
 The gate reads a manifest at startup. For any action the agent attempts,
 the gate looks up the action in the manifest and returns the declared class.

@@ -1,5 +1,5 @@
 """
-Worst-Case Chain Rule. Reference implementation of OWASP AISVS C9.2.7.
+Worst-Case Chain Rule. Reference implementation of OWASP AISVS C9.2.10.
 
 When an agent composes multiple actions in a chain, the worst-case action
 class across the chain governs the whole chain. A read followed by a write

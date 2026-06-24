@@ -1,4 +1,4 @@
-"""Tests for the worst-case chain rule (AISVS C9.2.7)."""
+"""Tests for the worst-case chain rule (AISVS C9.2.10)."""
 
 import sys
 from pathlib import Path

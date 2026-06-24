@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "AISVS Action-Class Reference: a reference implementation of OWASP AISVS C9.2.3, C9.2.4 and C9.2.7"
+title: "AISVS Action-Class Reference: a reference implementation of OWASP AISVS C9.2.3, C9.2.4 and C9.2.10, controls contributed by the author"
 message: "If you use this software, please cite it using the metadata below."
 type: software
 authors:
@@ -21,4 +21,4 @@ keywords:
   - worst-case chain rule
   - C9.2.3
   - C9.2.4
-  - C9.2.7
+  - C9.2.10

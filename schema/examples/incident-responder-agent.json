@@ -1,7 +1,7 @@
 {
   "agent_id": "incident-responder-v1",
   "manifest_version": "1.0.0",
-  "purpose": "Incident response agent. Investigates AND actuates: blocking users, quarantining hosts, revoking tokens. Mixed action classes from read_only up to irreversible. All write actions require approval per AISVS C9.2.6.",
+  "purpose": "Incident response agent. Investigates AND actuates: blocking users, quarantining hosts, revoking tokens. Mixed action classes from read_only up to irreversible. All write actions require approval per AISVS C9.2.4.",
   "publisher": "example-soc",
   "actions": [
     {

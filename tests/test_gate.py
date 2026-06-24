@@ -1,4 +1,4 @@
-"""Tests for the deterministic gate (AISVS C9.2.6)."""
+"""Tests for the deterministic gate (AISVS C9.2.3 and C9.2.4)."""
 
 import sys
 from pathlib import Path

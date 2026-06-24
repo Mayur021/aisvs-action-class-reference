@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/Mayur021/aisvs-action-class-reference/schema/action-class.schema.json",
-  "title": "AISVS C9.2.6 Action-Class Manifest",
+  "title": "AISVS C9.2.3 Action-Class Manifest",
   "description": "Manifest declaring the action class for each action an agent is permitted to perform. Evaluated by a deterministic gate. The class is declared by the agent publisher and is not derived from agent runtime output.",
   "type": "object",
   "required": ["agent_id", "manifest_version", "actions"],
@@ -39,7 +39,7 @@
           "class": {
             "type": "string",
             "enum": ["read_only", "reversible", "external_reversible", "irreversible"],
-            "description": "Action class per AISVS C9.2.6. read_only: action only reads, no state change. reversible: state change, cleanly undoable by agent or operator. external_reversible: reaches outside the system, undo requires external coordination. irreversible: cannot be cleanly undone."
+            "description": "Action class per AISVS C9.2.3. read_only: action only reads, no state change. reversible: state change, cleanly undoable by agent or operator. external_reversible: reaches outside the system, undo requires external coordination. irreversible: cannot be cleanly undone."
           },
           "description": {
             "type": "string",
@@ -62,7 +62,7 @@
     "default_policy_when_undeclared": {
       "type": "string",
       "enum": ["refuse"],
-      "description": "Behavior when the agent attempts an action not declared in this manifest. Always 'refuse' per C9.2.6. Listed explicitly for self-documentation.",
+      "description": "Behavior when the agent attempts an action not declared in this manifest. Always 'refuse', the fail-closed default this reference applies for unclassified actions when enforcing C9.2.4. Listed explicitly for self-documentation.",
       "default": "refuse"
     }
   },
