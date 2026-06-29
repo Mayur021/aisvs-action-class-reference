@@ -66,7 +66,8 @@ If you cite this work, see `CITATION.cff` for the structured citation.
 - OWASP AISVS v1.0 C9 Orchestration & Agentic Security (C9.2.3 / C9.2.4 / C9.2.10, shipped).
 - OWASP SPVS V1.3.7 (companion NHI runtime decision-rights work).
 - Christodorescu et al. "Agent Security is a Systems Problem" (arxiv 2605.18991) on why an LLM checking another LLM is not a trusted computing base.
-
+- [AITBM and AISVS: the quantification gap and Cn-6 proposal](docs/AITBM_AISVS_Quantification_Gap_Cn6_Proposal.md) — how AITBM scores the C9 controls this repo implements.
+  
 ## Author
 
 Mayur Agnihotri. LinkedIn: [linkedin.com/in/mayuragnihotri](https://www.linkedin.com/in/mayuragnihotri/). GitHub: [@Mayur021](https://github.com/Mayur021).
