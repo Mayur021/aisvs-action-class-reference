@@ -8,7 +8,7 @@ purpose: Explain where AITBM fits relative to OWASP AISVS, and formalize the Cn-
 references:
   - AITBM, https://www.aitbm.org (code, https://github.com/ninedter/AITBM)
   - OWASP AISVS v1.0, C9 Orchestration and Agentic Security
-  - AISVS Action-Class Reference, https://github.com/Mayur021/aisvs-action-class-reference (C9.2.3 / C9.2.4 / C9.2.10 reference implementation)
+  - AISVS Action-Class Reference, this repository (C9.2.3 / C9.2.4 / C9.2.10 reference implementation, see gate/ and schema/)
   - Five Eyes joint guidance, "Careful Adoption of Agentic AI Services", April 30 2026
 status: shared with maintainer for the Containment axis rework already in progress
 ---
@@ -44,7 +44,7 @@ The reversibility control already exists across three layers. AITBM completes th
 
 1. **Specification.** AISVS v1.0 C9 ships the controls: C9.2.3 reversibility classification, C9.2.4 runtime enforcement by class, C9.2.10 worst-case class governs across a multi-step or multi-agent chain.
 
-2. **Reference implementation.** The AISVS Action-Class Reference (github.com/Mayur021/aisvs-action-class-reference) is runnable code for those controls: a deterministic gate that reads a publisher-declared manifest and refuses any action not declared, plus a worst-case chain function that returns the governing class for a sequence of actions. The gate does not derive the class from model runtime output. The class is trusted, declared in the manifest, enforced by code the agent cannot reach.
+2. **Reference implementation.** This repository (the AISVS Action-Class Reference) is runnable code for those controls: a deterministic gate ([gate/](gate/)) that reads a publisher-declared manifest and refuses any action not declared, plus a worst-case chain function that returns the governing class for a sequence of actions. The gate does not derive the class from model runtime output. The class is trusted, declared in the manifest, enforced by code the agent cannot reach.
 
 3. **Measurement.** This is the missing layer. There is a spec and there is a working gate, but no metric that scores how completely an actual deployment applies the classification before it acts. Cn-6 is that metric.
 
